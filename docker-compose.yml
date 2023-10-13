@@ -2,7 +2,7 @@ version: "3"
 services:
   strapi:
     container_name: strapi
-    build: ./strapi
+    build: .
     env_file: .env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
@@ -40,14 +40,18 @@ services:
     networks:
       - strapi
 
-  api:
-    container_name: api_pac
-    platform: linux/amd64 #for platform error on Apple M1 chips
-    build: ./api
-    ports:
-      - "3000:3000"
-    networks:
-      - strapi
+  # api:
+  #   container_name: api_pac
+  #   platform: linux/amd64 #for platform error on Apple M1 chips
+  #   build: ./api
+  #   env_file: .env
+  #   volumes:
+  #     - strapi-data:/var/lib/postgresql/data/ #using a volume
+  #
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - strapi
 
 volumes:
   strapi-data:
