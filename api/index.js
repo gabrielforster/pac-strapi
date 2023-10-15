@@ -8,7 +8,7 @@ const proxy = httpProxy.createProxyServer({});
 
 const server = http.createServer((req, res) => {
   const target = {
-    target: 'http://18.231.106.52:1337',
+    target: 'http://127.0.0.1:1337',
   };
 
   proxy.on('proxyReq', (proxyReq, req, res, options) => {
